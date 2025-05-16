@@ -27,8 +27,9 @@ public class DocSearchController {
 	public ResponseEntity<String> documentAssist(@RequestBody String userQuery) {
 		try {
 			return ResponseEntity.ok(documentService.docSearch(userQuery));
+			System.out.println("User Query "+userQuery)
 		}catch (RuntimeException ex) {
-			log.error("Failed to process ", ex);
+			log.info("Failed to process ", ex);
 			return ResponseEntity.internalServerError().body("Sorry, can't process your question right now. Due to " +ex.getMessage());
 		} 
 		catch (Exception e) {
